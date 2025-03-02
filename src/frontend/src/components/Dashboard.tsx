@@ -11,8 +11,8 @@ interface DashboardProps {
 
 export function Dashboard({
                               baseUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-                                  ? '' // Empty for relative path in development
-                                  : window.location.origin.replace('http', 'ws')
+  ? '' // Empty for relative path in development
+  : 'wss://office-system.onrender.com'
                           }: DashboardProps) {
     const [documentMessage, setDocumentMessage] = useState<DocumentMessage>();
     const [analyticsData, setAnalyticsData] = useState<AnalyticsMessage[]>([]);
