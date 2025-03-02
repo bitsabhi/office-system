@@ -1,0 +1,6 @@
+{
+    "base_path": "/Users/abhissrivasta/AmsyPycharm/office_system/data",
+    "api_key": "your-api-key-here",
+    "log_level": "INFO",
+    "max_workers": 4
+}

@@ -1,0 +1,13 @@
+.App {
+  width: 100%;
+}
+
+.App-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
