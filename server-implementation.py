@@ -2,6 +2,7 @@
 from pathlib import Path
 import asyncio
 from fastapi import FastAPI, WebSocket
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, Any
 
@@ -33,6 +34,16 @@ class WorkflowEngine:
         return {"status": "created", "workflow_id": workflow_id}
 
 app = FastAPI()
+
+# Add CORS middleware after creating the app
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For development - restrict this in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 analytics_engine = AnalyticsEngine(AnalyticsConfig())
 workflow_engine = WorkflowEngine()
 

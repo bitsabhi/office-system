@@ -140,7 +140,7 @@ export function DocumentStream({
                 <p className="text-sm text-blue-600">Status: {lastMessage.status}</p>
               </div>
               <span className="bg-blue-200 text-blue-800 text-xs px-2 py-1 rounded-full">
-                {lastMessage.timestamp ? new Date(lastMessage.timestamp).toLocaleTimeString() : "Just now"}
+                {new Date(lastMessage.created_at || lastMessage.timestamp).toLocaleTimeString()}
               </span>
             </div>
             <p className="mt-2 text-sm text-gray-600 line-clamp-3">{lastMessage.content}</p>

@@ -52,7 +52,7 @@ export function WorkflowStream({ workflows, error }: WorkflowStreamProps) {
                           'bg-gray-300'
                         }`}></span>
                         {step.name} - {step.status}
-                        {step.completed && ' (Completed)'}
+                        {step.completed_at && ` (${new Date(step.completed_at).toLocaleTimeString()})`}
                       </li>
                     ))}
                   </ul>

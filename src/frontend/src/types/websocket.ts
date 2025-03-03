@@ -1,34 +1,38 @@
+// src/types/websocket.ts
 export interface DocumentMessage {
   id: string;
   title: string;
-  content?: string;
+  content: string;
   status: string;
-  created_at: string;
-  updated_at: string;
-  type: string;
+  created_at: string; // ISO date string
+  updated_at?: string; // ISO date string, optional
+  timestamp?: string; // Add this as an alias for created_at for backward compatibility
 }
 
 export interface AnalyticsMessage {
   timestamp: string;
   document_count: number;
-  upload_count: number;
-  user_actions: number;
+  upload_count: number; // Added for AnalyticsStream.tsx
+  user_actions: number; // Added for AnalyticsStream.tsx
+  active_users: number;
+  processing_time: number;
+  system_load: number;
+}
+
+export interface WorkflowStep {
+  name: string;
+  status: string;
+  completed: boolean;
 }
 
 export interface WorkflowMessage {
   workflow_id: string;
   document_id: string;
   status: string;
-  started_at: string;
-  updated_at: string;
-  steps: Array<{
-    name: string;
-    status: string;
-    completed_at?: string;
-  }>;
-}
-
-export interface WebSocketMessage {
-  type: 'document' | 'analytics' | 'workflow';
-  payload: any;
+  step: string;
+  steps: WorkflowStep[]; // Added for WorkflowStream.tsx
+  progress: number;
+  timestamp: string;
+  started_at: string; // Added for WorkflowStream.tsx
+  updated_at: string; // Added for WorkflowStream.tsx
 }
